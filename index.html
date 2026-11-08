@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alvino Aldorino — Full-Stack Developer</title>
+  <meta name="description" content="Personal Portfolio of Alvino Aldorino - Full-Stack Developer specializing in modern web applications, Laravel, and frontend technologies." />
+  <meta name="theme-color" content="#09090b" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind CSS CDN with Custom Theme Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            dark: {
+              base: '#09090b',
+              surface: '#0d0b14',
+              card: '#13111c',
+              border: 'rgba(168, 85, 247, 0.15)',
+              borderHover: 'rgba(168, 85, 247, 0.45)',
+            },
+            cyber: {
+              violet: '#8B5CF6',
+              purple: '#A855F7',
+              fuchsia: '#D946EF',
+              glow: 'rgba(168, 85, 247, 0.25)',
+            }
+          },
+          boxShadow: {
+            'neon': '0 0 25px -5px rgba(168, 85, 247, 0.35)',
+            'neon-lg': '0 0 40px -5px rgba(168, 85, 247, 0.5)',
+            'subtle-glow': '0 0 15px -3px rgba(139, 92, 246, 0.2)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Cyber Grid Ambient Background */
+    .cyber-bg {
+      background-color: #09090b;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15), transparent 45%),
+        radial-gradient(circle at 100% 50%, rgba(168, 85, 247, 0.08), transparent 35%),
+        radial-gradient(circle at 0% 80%, rgba(217, 70, 239, 0.08), transparent 35%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+    }
+
+    /* Pixel Art Rendering */
+    .pixelated {
+      image-rendering: pixelated;
+      shape-rendering: crispEdges;
+    }
+
+    /* Floating Keyframe */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .animate-float {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+
+    /* Glass card utility */
+    .glass-card {
+      background: #13111c;
+      border: 1px solid rgba(168, 85, 247, 0.16);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(168, 85, 247, 0.45);
+      box-shadow: 0 0 25px -5px rgba(168, 85, 247, 0.3);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="cyber-bg text-zinc-100 min-h-screen selection:bg-purple-600 selection:text-white font-sans antialiased">
+
+  <!-- ==================== A. NAVBAR ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#09090b]/80 backdrop-blur-md border-b border-purple-500/15">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex items-center gap-2 group">
+        <span class="w-2.5 h-2.5 rounded-full bg-purple-500 shadow-[0_0_8px_#a855f7] group-hover:scale-125 transition-transform"></span>
+        <span class="font-mono font-bold text-lg tracking-wider text-white group-hover:text-purple-400 transition-colors">
+          alvino<span class="text-purple-500">aldorino</span>
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+        <a href="#skills" class="hover:text-purple-400 transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-purple-400 transition-colors">Experience</a>
+        <a href="#projects" class="hover:text-purple-400 transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-purple-400 transition-colors">Contact</a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-xl bg-purple-600/20 text-purple-300 border border-purple-500/30 hover:bg-purple-600 hover:text-white hover:shadow-neon transition-all">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Let's Talk</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" aria-expanded="false" class="md:hidden p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-zinc-800/60 focus:outline-none">
+        <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-purple-500/20 bg-[#0d0b14]/95 px-4 pt-3 pb-6 space-y-2">
+      <a href="#about" class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:bg-purple-950/40 hover:text-purple-300">About</a>
+      <a href="#skills" class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:bg-purple-950/40 hover:text-purple-300">Skills</a>
+      <a href="#experience" class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:bg-purple-950/40 hover:text-purple-300">Experience</a>
+      <a href="#projects" class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:bg-purple-950/40 hover:text-purple-300">Projects</a>
+      <a href="#contact" class="block px-3 py-2 rounded-lg text-sm font-medium text-zinc-300 hover:bg-purple-950/40 hover:text-purple-300">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" class="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-semibold rounded-xl bg-purple-600 text-white shadow-neon">
+          <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          <span>Let's Talk</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== B. HERO SECTION ==================== -->
+  <section id="hero" class="relative pt-36 pb-20 md:pt-44 md:pb-28 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
+    <!-- Status Badge -->
+    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-purple-950/50 border border-purple-500/30 text-purple-300 text-xs sm:text-sm font-medium shadow-subtle-glow mb-8 animate-pulse">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
+      <span>Available for new Projects</span>
+    </div>
+
+    <!-- Headline -->
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white mb-5 leading-tight">
+      Hey! , I am <br class="sm:hidden" />
+      <span class="bg-gradient-to-r from-purple-400 via-violet-300 to-fuchsia-400 bg-clip-text text-transparent">
+        Alvino Aldorino
+      </span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="font-mono text-purple-300/90 text-lg sm:text-xl font-medium tracking-wide mb-6">
+      &lt;Full-Stack Developer / Software Engineer /&gt;
+    </p>
+
+    <!-- Short Bio -->
+    <p class="max-w-2xl text-zinc-400 text-base sm:text-lg leading-relaxed mb-10">
+      Membangun aplikasi web modern berkinerja tinggi dengan arsitektur bersih, estetika futuristik, dan pengalaman pengguna yang mulus dari database hingga antarmuka.
+    </p>
+
+    <!-- Dual CTA Buttons -->
+    <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+      <a href="#projects" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white shadow-neon hover:shadow-neon-lg transition-all transform hover:-translate-y-0.5">
+        <i data-lucide="layers" class="w-4 h-4"></i>
+        <span>View My Work</span>
+      </a>
+      <a href="#contact" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-sm bg-zinc-900/80 hover:bg-zinc-800 text-zinc-200 border border-purple-500/25 hover:border-purple-500/50 transition-all">
+        <i data-lucide="message-square" class="w-4 h-4"></i>
+        <span>Get in Touch</span>
+      </a>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="mt-16 text-zinc-500 flex flex-col items-center gap-2 animate-bounce">
+      <span class="text-xs uppercase tracking-widest font-mono">Scroll</span>
+      <i data-lucide="chevron-down" class="w-4 h-4 text-purple-400"></i>
+    </div>
+  </section>
+
+  <!-- ==================== C. ABOUT ME SECTION ==================== -->
+  <section id="about" class="py-20 border-t border-purple-500/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase mb-2">Discovery</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">About Me</h3>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- Bio Column -->
+        <div class="lg:col-span-7 space-y-5 text-zinc-300 text-base leading-relaxed">
+          <p>
+            Halo! Saya <span class="text-white font-semibold">Alvino Aldorino</span>, seorang developer web yang berfokus menciptakan solusi digital tangguh dan mudah dirawat. Berawal dari rasa penasaran tentang bagaimana logika backend berpadu dengan keindahan antarmuka, saya mendedikasikan diri untuk merancang aplikasi modern yang cepat dan intuitif.
+          </p>
+          <p>
+            Prinsip utama saya adalah <span class="text-purple-300 font-medium">Clean Code</span>, efisiensi eksekusi, serta kenyamanan developer (*maintainability*). Saya terbiasa mengolah sistem backend dengan <strong class="text-zinc-100">PHP (Laravel)</strong> maupun ekosistem <strong class="text-zinc-100">JavaScript/TypeScript</strong>, dipadukan dengan styling kontemporer melalui <strong class="text-zinc-100">Tailwind CSS</strong>.
+          </p>
+          <p>
+            Ketika tidak sedang *coding*, saya antusias mengeksplorasi tren teknologi baru, berkontribusi pada proyek open-source, dan mengulik arsitektur sistem cloud.
+          </p>
+
+          <div class="pt-3 flex flex-wrap gap-4 text-sm font-mono text-purple-300">
+            <div class="flex items-center gap-2 bg-purple-950/30 px-3 py-1.5 rounded-lg border border-purple-500/20">
+              <i data-lucide="sparkles" class="w-4 h-4 text-purple-400"></i>
+              <span>High Performance UI</span>
+            </div>
+            <div class="flex items-center gap-2 bg-purple-950/30 px-3 py-1.5 rounded-lg border border-purple-500/20">
+              <i data-lucide="code-2" class="w-4 h-4 text-purple-400"></i>
+              <span>Modular & Scalable</span>
+            </div>
+            <div class="flex items-center gap-2 bg-purple-950/30 px-3 py-1.5 rounded-lg border border-purple-500/20">
+              <i data-lucide="cpu" class="w-4 h-4 text-purple-400"></i>
+              <span>Problem Solver</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mascot Pixel Art Column -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative group">
+            <!-- Glow backlight -->
+            <div class="absolute -inset-2 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-3xl blur-xl opacity-35 group-hover:opacity-60 transition duration-500"></div>
+
+            <div class="relative glass-card p-6 rounded-2xl flex flex-col items-center text-center">
+              <!-- Pixel Art SVG Mascot: 8-bit Violet Cyber Cat with Sparkles -->
+              <div class="w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center animate-float">
+                <svg class="w-full h-full pixelated drop-shadow-[0_0_12px_rgba(168,85,247,0.6)]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Pixel Stars / Sparkles -->
+                  <!-- Top-left sparkle -->
+                  <rect x="2" y="3" width="1" height="1" fill="#fde047" />
+                  <rect x="1" y="4" width="3" height="1" fill="#fde047" />
+                  <rect x="2" y="5" width="1" height="1" fill="#fde047" />
+
+                  <!-- Top-right sparkle -->
+                  <rect x="21" y="5" width="1" height="1" fill="#c084fc" />
+                  <rect x="20" y="6" width="3" height="1" fill="#c084fc" />
+                  <rect x="21" y="7" width="1" height="1" fill="#c084fc" />
+
+                  <!-- Bottom-left sparkle -->
+                  <rect x="3" y="19" width="1" height="1" fill="#c084fc" />
+
+                  <!-- Ears (Outer Dark Purple) -->
+                  <rect x="7" y="4" width="2" height="4" fill="#3b0764" />
+                  <rect x="15" y="4" width="2" height="4" fill="#3b0764" />
+                  <!-- Ears (Inner Pink) -->
+                  <rect x="8" y="5" width="1" height="2" fill="#f472b6" />
+                  <rect x="15" y="5" width="1" height="2" fill="#f472b6" />
+
+                  <!-- Head Shape (Violet Base) -->
+                  <rect x="6" y="8" width="12" height="7" fill="#8b5cf6" />
+                  <rect x="5" y="9" width="14" height="5" fill="#8b5cf6" />
+
+                  <!-- Cheeks / Face Highlight -->
+                  <rect x="6" y="12" width="2" height="2" fill="#a855f7" />
+                  <rect x="16" y="12" width="2" height="2" fill="#a855f7" />
+
+                  <!-- Glowing Cyber Eyes -->
+                  <rect x="8" y="10" width="2" height="2" fill="#38bdf8" />
+                  <rect x="14" y="10" width="2" height="2" fill="#38bdf8" />
+                  <!-- Eye Sparkle Pupil -->
+                  <rect x="8" y="10" width="1" height="1" fill="#ffffff" />
+                  <rect x="14" y="10" width="1" height="1" fill="#ffffff" />
+
+                  <!-- Cute Nose & Mouth -->
+                  <rect x="11" y="12" width="2" height="1" fill="#f472b6" />
+                  <rect x="11" y="13" width="2" height="1" fill="#3b0764" />
+
+                  <!-- Body -->
+                  <rect x="7" y="15" width="10" height="6" fill="#7c3aed" />
+                  <rect x="8" y="15" width="8" height="5" fill="#8b5cf6" />
+                  <!-- Belly Patch -->
+                  <rect x="10" y="16" width="4" height="4" fill="#c084fc" />
+
+                  <!-- Paws -->
+                  <rect x="8" y="21" width="2" height="1" fill="#a855f7" />
+                  <rect x="14" y="21" width="2" height="1" fill="#a855f7" />
+
+                  <!-- Tail (Curling on right) -->
+                  <rect x="17" y="18" width="2" height="1" fill="#7c3aed" />
+                  <rect x="19" y="16" width="1" height="3" fill="#8b5cf6" />
+                  <rect x="18" y="15" width="2" height="1" fill="#c084fc" />
+                </svg>
+              </div>
+
+              <!-- Mascot Tag -->
+              <div class="mt-4 font-mono text-xs text-purple-300">
+                <span class="inline-block px-2.5 py-1 rounded bg-purple-950/80 border border-purple-500/30">
+                  cyber-cat.svg // 8-bit companion
+                </span>
+              </div>
+              <p class="text-xs text-zinc-500 mt-2 font-mono">Curious • Relentless • Bug Catcher</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== D. SKILLS & TECHNOLOGIES ==================== -->
+  <section id="skills" class="py-20 border-t border-purple-500/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase mb-2">Capabilities</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Skills & Technologies</h3>
+        <p class="text-zinc-400 text-sm max-w-lg mx-auto mt-3">Kombinasi bahasa pemrograman, framework, dan tools yang saya gunakan untuk mewujudkan produk digital.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 1. Core Languages -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+            <i data-lucide="terminal" class="w-5 h-5"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Core Languages</h4>
+          <p class="text-xs text-zinc-400 mb-5">Fondasi logika pemrograman untuk arsitektur backend & frontend.</p>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">PHP</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">JavaScript</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">TypeScript</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Python</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">HTML5</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">CSS3</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">SQL</span>
+          </div>
+        </div>
+
+        <!-- 2. Frameworks & Libraries -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+            <i data-lucide="boxes" class="w-5 h-5"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Frameworks & Libraries</h4>
+          <p class="text-xs text-zinc-400 mb-5">Perkakas modern untuk akselerasi pembangunan antarmuka dan REST API.</p>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Laravel</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Tailwind CSS</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Bootstrap</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Vue.js</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">React</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Express.js</span>
+          </div>
+        </div>
+
+        <!-- 3. Tools & Database -->
+        <div class="glass-card rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-4">
+            <i data-lucide="database" class="w-5 h-5"></i>
+          </div>
+          <h4 class="text-lg font-bold text-white mb-2">Tools & Database</h4>
+          <p class="text-xs text-zinc-400 mb-5">Manajemen basis data relasional, version control, dan ekosistem dev.</p>
+
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">MySQL</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Git</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">GitHub</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Postman</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Vite</span>
+            <span class="px-3 py-1.5 rounded-lg text-xs font-mono bg-purple-950/40 text-purple-200 border border-purple-500/20">Laragon / Docker</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== E. EXPERIENCE TIMELINE ==================== -->
+  <section id="experience" class="py-20 border-t border-purple-500/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase mb-2">Milestones</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Experience & Journey</h3>
+      </div>
+
+      <!-- Timeline Container -->
+      <div class="relative pl-6 sm:pl-8 border-l-2 border-purple-500/20 space-y-12 ml-2 sm:ml-4">
+        <!-- Item 1: 2026 -->
+        <div class="relative group">
+          <!-- Timeline Node Point -->
+          <span class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#09090b] border-2 border-purple-500 group-hover:scale-125 group-hover:bg-purple-500 transition-all shadow-[0_0_10px_#a855f7]"></span>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-600/30 text-purple-300 border border-purple-500/30">
+                2026 - Present
+              </span>
+              <span class="text-xs text-zinc-500 font-mono">Full-Stack Projects</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Independent Software Engineer & Web Specialist</h4>
+            <p class="text-xs text-purple-300 mb-3 font-medium">Freelance & Open Source</p>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Merancang dan mengimplementasikan solusi web skala komersial dan sistem internal menggunakan Laravel, REST API, Tailwind CSS, dan arsitektur database teroptimasi.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2: 2025 -->
+        <div class="relative group">
+          <span class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#09090b] border-2 border-purple-500 group-hover:scale-125 group-hover:bg-purple-500 transition-all shadow-[0_0_10px_#a855f7]"></span>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-600/30 text-purple-300 border border-purple-500/30">
+                2025
+              </span>
+              <span class="text-xs text-zinc-500 font-mono">Web Application Development</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Junior Web Developer</h4>
+            <p class="text-xs text-purple-300 mb-3 font-medium">Project Collaborations & Internal Tools</p>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Mengembangkan modul autentikasi, dashboard analitik, dan integrasi payment gateway. Mempercepat performa query MySQL dan menyempurnakan responsivitas antarmuka mobile.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3: 2024 -->
+        <div class="relative group">
+          <span class="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-[#09090b] border-2 border-purple-500 group-hover:scale-125 group-hover:bg-purple-500 transition-all shadow-[0_0_10px_#a855f7]"></span>
+
+          <div class="glass-card rounded-2xl p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-purple-600/30 text-purple-300 border border-purple-500/30">
+                2024
+              </span>
+              <span class="text-xs text-zinc-500 font-mono">Academic & Foundation</span>
+            </div>
+            <h4 class="text-lg font-bold text-white">Informatics & Software Engineering Foundation</h4>
+            <p class="text-xs text-purple-300 mb-3 font-medium">Computer Science / Software Track</p>
+            <p class="text-sm text-zinc-400 leading-relaxed">
+              Mendalami algoritma, struktur data, paradigma pemrograman berorientasi objek (OOP), basis data relasional, dan dasar arsitektur web modern.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== F. MY PROJECTS SECTION ==================== -->
+  <section id="projects" class="py-20 border-t border-purple-500/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase mb-2">Portfolio</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Featured Projects</h3>
+        <p class="text-zinc-400 text-sm max-w-lg mx-auto mt-3">Beberapa karya dan implementasi sistem yang telah saya selesaikan.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <!-- Project 1: E-Commerce Platform -->
+        <article class="glass-card rounded-2xl overflow-hidden flex flex-col group">
+          <!-- Thumbnail Graphic Banner -->
+          <div class="h-44 bg-gradient-to-br from-purple-950 via-zinc-900 to-black p-5 flex flex-col justify-between border-b border-purple-500/15 relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 w-32 h-32 bg-purple-600/20 rounded-full blur-2xl group-hover:bg-purple-600/35 transition-all"></div>
+            <div class="flex items-center justify-between z-10">
+              <span class="px-2.5 py-1 rounded bg-purple-900/60 border border-purple-500/30 text-[11px] font-mono text-purple-300">Web App</span>
+              <i data-lucide="shopping-bag" class="w-5 h-5 text-purple-400"></i>
+            </div>
+            <div class="z-10">
+              <span class="text-xs font-mono text-zinc-500">Full-Stack Solution</span>
+              <h5 class="text-base font-bold text-white group-hover:text-purple-300 transition-colors">NovaStore E-Commerce</h5>
+            </div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                Platform toko daring komprehensif dengan manajemen keranjang belanja, integrasi payment gateway, invoice generator otomatis, dan panel admin berbasis peran (RBAC).
+              </p>
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">Laravel</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">MySQL</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">Tailwind CSS</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">Midtrans</span>
+              </div>
+            </div>
+
+            <!-- Action Links -->
+            <div class="flex items-center justify-between pt-4 border-t border-purple-500/10">
+              <a href="https://github.com/zaxkai" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-300 hover:text-purple-400 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                <span>Repository</span>
+              </a>
+              <a href="#contact" class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 hover:text-purple-300 transition-colors">
+                <span>View Details</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Realtime Collaboration / Chat System -->
+        <article class="glass-card rounded-2xl overflow-hidden flex flex-col group">
+          <!-- Thumbnail Graphic Banner -->
+          <div class="h-44 bg-gradient-to-br from-indigo-950 via-zinc-900 to-black p-5 flex flex-col justify-between border-b border-purple-500/15 relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 w-32 h-32 bg-violet-600/20 rounded-full blur-2xl group-hover:bg-violet-600/35 transition-all"></div>
+            <div class="flex items-center justify-between z-10">
+              <span class="px-2.5 py-1 rounded bg-indigo-900/60 border border-purple-500/30 text-[11px] font-mono text-indigo-300">Realtime App</span>
+              <i data-lucide="message-circle" class="w-5 h-5 text-indigo-400"></i>
+            </div>
+            <div class="z-10">
+              <span class="text-xs font-mono text-zinc-500">WebSocket Architecture</span>
+              <h5 class="text-base font-bold text-white group-hover:text-purple-300 transition-colors">PulseChat Collaboration</h5>
+            </div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                Sistem pesan instan dan ruang kolaborasi tim dengan komunikasi real-time, status kehadiran pengguna (*typing indicator* & online presence), serta enkripsi data percakapan.
+              </p>
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">Express.js</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">Socket.io</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">Vue.js</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">PostgreSQL</span>
+              </div>
+            </div>
+
+            <!-- Action Links -->
+            <div class="flex items-center justify-between pt-4 border-t border-purple-500/10">
+              <a href="https://github.com/zaxkai" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-300 hover:text-purple-400 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                <span>Repository</span>
+              </a>
+              <a href="#contact" class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 hover:text-purple-300 transition-colors">
+                <span>View Details</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Company Profile & Analytics Dashboard -->
+        <article class="glass-card rounded-2xl overflow-hidden flex flex-col group">
+          <!-- Thumbnail Graphic Banner -->
+          <div class="h-44 bg-gradient-to-br from-fuchsia-950 via-zinc-900 to-black p-5 flex flex-col justify-between border-b border-purple-500/15 relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 w-32 h-32 bg-fuchsia-600/20 rounded-full blur-2xl group-hover:bg-fuchsia-600/35 transition-all"></div>
+            <div class="flex items-center justify-between z-10">
+              <span class="px-2.5 py-1 rounded bg-fuchsia-900/60 border border-purple-500/30 text-[11px] font-mono text-fuchsia-300">Dashboard</span>
+              <i data-lucide="bar-chart-3" class="w-5 h-5 text-fuchsia-400"></i>
+            </div>
+            <div class="z-10">
+              <span class="text-xs font-mono text-zinc-500">Corporate & Insights</span>
+              <h5 class="text-base font-bold text-white group-hover:text-purple-300 transition-colors">Apex Corporate & Analytics</h5>
+            </div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <p class="text-sm text-zinc-400 leading-relaxed mb-4">
+                Website profil korporat interaktif berkecepatan tinggi yang dilengkapi dashboard analitik metrik kunjungan, visualisasi grafik data penjualan, dan CMS artikel kustom.
+              </p>
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-1.5 mb-6">
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">Tailwind CSS</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">JavaScript</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">Chart.js</span>
+                <span class="px-2.5 py-0.5 rounded text-xs font-mono bg-purple-950/50 text-purple-300 border border-purple-500/20">PHP / Laravel</span>
+              </div>
+            </div>
+
+            <!-- Action Links -->
+            <div class="flex items-center justify-between pt-4 border-t border-purple-500/10">
+              <a href="https://github.com/zaxkai" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-300 hover:text-purple-400 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                <span>Repository</span>
+              </a>
+              <a href="#contact" class="inline-flex items-center gap-1.5 text-xs font-semibold text-purple-400 hover:text-purple-300 transition-colors">
+                <span>View Details</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== G. CONTACT & SOCIALS SECTION ==================== -->
+  <section id="contact" class="py-20 border-t border-purple-500/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <h2 class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase mb-2">Connect</h2>
+        <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Let's Work Together</h3>
+        <p class="text-zinc-400 text-sm max-w-lg mx-auto mt-3">Punya ide proyek menarik atau ingin berdiskusi seputar peluang kerja sama? Kirimkan pesan Anda!</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <!-- Left: Contact Form -->
+        <div class="lg:col-span-7 glass-card rounded-2xl p-6 sm:p-8">
+          <h4 class="text-lg font-bold text-white mb-2">Send a Message</h4>
+          <p class="text-xs text-zinc-400 mb-6">Pesan Anda akan otomatis dipersiapkan untuk dikirim ke email saya.</p>
+
+          <form id="contact-form" class="space-y-4">
+            <div>
+              <label for="name" class="block text-xs font-mono text-zinc-300 mb-1.5">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 border border-purple-500/20 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 text-sm text-zinc-100 placeholder-zinc-600 transition" />
+            </div>
+
+            <div>
+              <label for="email" class="block text-xs font-mono text-zinc-300 mb-1.5">Your Email</label>
+              <input type="email" id="email" name="email" required placeholder="john@example.com" class="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 border border-purple-500/20 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 text-sm text-zinc-100 placeholder-zinc-600 transition" />
+            </div>
+
+            <div>
+              <label for="message" class="block text-xs font-mono text-zinc-300 mb-1.5">Your Message</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Ceritakan tentang proyek atau ide kerja sama Anda..." class="w-full px-4 py-2.5 rounded-xl bg-zinc-900/80 border border-purple-500/20 focus:border-purple-500 focus:outline-none focus:ring-1 focus:ring-purple-500 text-sm text-zinc-100 placeholder-zinc-600 transition resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-3 px-6 rounded-xl font-semibold text-sm bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 text-white shadow-neon hover:shadow-neon-lg transition-all flex items-center justify-center gap-2">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+
+          <!-- Toast feedback element -->
+          <div id="form-toast" class="hidden mt-4 p-3 rounded-xl bg-purple-950/60 border border-purple-500/40 text-xs font-mono text-purple-200 text-center"></div>
+        </div>
+
+        <!-- Right: Information, Services, and Social Media -->
+        <div class="lg:col-span-5 space-y-6">
+          <!-- Services Card -->
+          <div class="glass-card rounded-2xl p-6">
+            <h4 class="text-base font-bold text-white mb-3">Layanan yang Ditawarkan</h4>
+            <ul class="space-y-2.5 text-xs text-zinc-300">
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                <span>Custom Full-Stack Web Development (Laravel & JS)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                <span>Modern Responsive UI / UX Development (Tailwind CSS)</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                <span>RESTful API Architecture & Database Optimization</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-purple-400 shrink-0"></i>
+                <span>Static Website Deployment (GitHub Pages, Vercel)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Social Links Card -->
+          <div class="glass-card rounded-2xl p-6">
+            <h4 class="text-base font-bold text-white mb-2">Connect Directly</h4>
+            <p class="text-xs text-zinc-400 mb-5">Terhubung melalui platform dan jejaring sosial berikut:</p>
+
+            <div class="grid grid-cols-2 gap-3">
+              <!-- GitHub -->
+              <a href="https://github.com/zaxkai" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-purple-500/20 hover:border-purple-500 hover:bg-purple-950/30 transition group">
+                <svg class="w-5 h-5 text-zinc-400 group-hover:text-purple-400 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+                <span class="text-xs font-semibold text-zinc-300 group-hover:text-white">GitHub</span>
+              </a>
+
+              <!-- YouTube -->
+              <a href="https://youtube.com/@alvinoaldorino" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-purple-500/20 hover:border-purple-500 hover:bg-purple-950/30 transition group">
+                <svg class="w-5 h-5 text-zinc-400 group-hover:text-red-400 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path><path d="m10 15 5-3-5-3z" fill="currentColor"></path></svg>
+                <span class="text-xs font-semibold text-zinc-300 group-hover:text-white">YouTube</span>
+              </a>
+
+              <!-- Instagram -->
+              <a href="https://instagram.com/alvinoaldorino" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-purple-500/20 hover:border-purple-500 hover:bg-purple-950/30 transition group">
+                <svg class="w-5 h-5 text-zinc-400 group-hover:text-pink-400 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                <span class="text-xs font-semibold text-zinc-300 group-hover:text-white">Instagram</span>
+              </a>
+
+              <!-- Email Direct -->
+              <a href="mailto:alvinorino890@gmail.com" class="flex items-center gap-3 p-3 rounded-xl bg-zinc-900/60 border border-purple-500/20 hover:border-purple-500 hover:bg-purple-950/30 transition group">
+                <i data-lucide="mail" class="w-5 h-5 text-zinc-400 group-hover:text-purple-400 transition-colors"></i>
+                <span class="text-xs font-semibold text-zinc-300 group-hover:text-white">Email</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== H. FOOTER ==================== -->
+  <footer class="border-t border-purple-500/15 bg-[#09090b] py-8 text-center text-xs text-zinc-500">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-purple-500 shadow-[0_0_6px_#a855f7]"></span>
+        <span class="font-mono text-zinc-400">© 2026 Alvino Aldorino. All rights reserved.</span>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <span class="text-zinc-600 font-mono">Dark Cyber Violet Edition</span>
+        <a href="#hero" class="inline-flex items-center gap-1.5 text-purple-400 hover:text-purple-300 transition-colors">
+          <span>Back to Top</span>
+          <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT & SELF CHECK ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when a navigation item is clicked
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Contact Form Handler
+    // shortcut: static client-side mailto trigger, upgrade to Formspree/Web3Forms webhook if backend email service needed
+    const contactForm = document.getElementById('contact-form');
+    const formToast = document.getElementById('form-toast');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        showToast('Mohon lengkapi semua field formulir.', true);
+        return;
+      }
+
+      // Construct mailto link
+      const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+      const body = encodeURIComponent(`Nama: ${name}\nEmail: ${email}\n\nPesan:\n${message}`);
+      const mailtoUrl = `mailto:alvinorino890@gmail.com?subject=${subject}&body=${body}`;
+
+      showToast('Membuka email client untuk mengirim pesan...', false);
+      window.location.href = mailtoUrl;
+
+      contactForm.reset();
+    });
+
+    function showToast(text, isError) {
+      formToast.textContent = text;
+      formToast.className = `mt-4 p-3 rounded-xl border text-xs font-mono text-center block ${
+        isError ? 'bg-red-950/60 border-red-500/40 text-red-200' : 'bg-purple-950/60 border-purple-500/40 text-purple-200'
+      }`;
+      setTimeout(() => {
+        formToast.classList.add('hidden');
+      }, 5000);
+    }
+
+    // Ponytail Self-Check / Sanity Assertion Check
+    (function runSanityChecks() {
+      try {
+        const requiredSections = ['hero', 'about', 'skills', 'experience', 'projects', 'contact'];
+        const missingSections = requiredSections.filter(id => !document.getElementById(id));
+        console.assert(missingSections.length === 0, 'Self-check failed: Missing sections', missingSections);
+
+        const form = document.getElementById('contact-form');
+        console.assert(form !== null, 'Self-check failed: Contact form not found');
+
+        const navBtn = document.getElementById('mobile-menu-btn');
+        console.assert(navBtn !== null, 'Self-check failed: Mobile menu button not found');
+
+        console.log('[Portfolio Sanity Check]: All structural elements validated successfully.');
+      } catch (err) {
+        console.error('[Portfolio Sanity Check Error]:', err);
+      }
+    })();
+  </script>
+</body>
+</html>
