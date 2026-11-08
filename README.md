@@ -4,7 +4,7 @@ Website portofolio pribadi Alvino Aldorino, Full-Stack Developer spesialis Larav
 
 ## Live Demo
 Website dapat diakses secara publik di:
-`https://zaxkai.github.io/portofolio/` (setelah mengaktifkan GitHub Pages di settings repositori).
+`https://alvinoaldorino.github.io/portofolio/` (setelah mengaktifkan GitHub Pages di settings repositori).
 
 ## Karakteristik & Tech Stack
 - **HTML5 & Semantic Markup**: Struktur semantik dengan tag landmark, heading hierarchy yang rapi, dan atribut ARIA untuk aksesibilitas inklusif.
@@ -13,9 +13,9 @@ Website dapat diakses secara publik di:
 - **Validasi Sertifikat & Prestasi**: Menampilkan dokumen asli dan foto sertifikat beresolusi tinggi untuk verifikasi kompetisi nasional (JHIC 2026, ITechno Cup 2026, Cisco Networking Academy, Dibimbing.id).
 
 ## Proyek Pilihan
-- **[Aurea](https://github.com/zaxkai/aurea)**: Aplikasi pelacak kebiasaan dan kesehatan mental berbasis gamifikasi dengan integrasi Livewire 3, Gemini AI, dan Midtrans.
-- **[MyTurn](https://github.com/zaxkai/Myturn)**: Sistem antrean digital layanan publik terencana berbasis REST API dan Docker (karya kompetisi ITechno Cup 2026 oleh Tim Gotei13).
-- **[Weather Dashboard (Noir)](https://github.com/zaxkai/Weather-Dashboard)**: Dashboard cuaca cepat berbasis Vanilla JS dengan integrasi Open-Meteo dan Nominatim geocoding.
+- **[Aurea](https://github.com/alvinoaldorino/aurea)**: Aplikasi pelacak kebiasaan dan kesehatan mental berbasis gamifikasi dengan integrasi Livewire 3, Gemini AI, dan Midtrans.
+- **[MyTurn](https://github.com/alvinoaldorino/Myturn)**: Sistem antrean digital layanan publik terencana berbasis REST API dan Docker (karya kompetisi ITechno Cup 2026 oleh Tim Gotei13).
+- **[Weather Dashboard (Noir)](https://github.com/alvinoaldorino/Weather-Dashboard)**: Dashboard cuaca cepat berbasis Vanilla JS dengan integrasi Open-Meteo dan Nominatim geocoding.
 
 ## Struktur Berkas
 ```text
@@ -34,7 +34,7 @@ Website dapat diakses secara publik di:
 ```
 
 ## Panduan Deploy ke GitHub Pages
-1. Masuk ke halaman repositori di GitHub: `https://github.com/zaxkai/portofolio`.
+1. Masuk ke halaman repositori di GitHub: `https://github.com/alvinoaldorino/portofolio`.
 2. Klik tab **Settings** -> **Pages**.
 3. Di bagian **Build and deployment > Source**, pilih **Deploy from a branch**.
 4. Pilih branch `main` dan folder `/ (root)`.

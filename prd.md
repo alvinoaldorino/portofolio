@@ -108,7 +108,7 @@ Dikelompokkan ke dalam kartu kategori bergradasi gelap:
 * **Connect Directly Card**:
   * Teks ajakan kolaborasi dan kemudahan komunikasi langsung.
   * **Baris Ikon Sosial Media Interaktif**:
-    * **GitHub**: `https://github.com/zaxkai`
+    * **GitHub**: `https://github.com/alvinoaldorino`
     * **YouTube**: `https://youtube.com/@zaxkai01?si=ViW1FjtthBHRgBSw`
     * **Instagram**: `https://www.instagram.com/zaxkai_1?cplk=Y214ZWtnaThubzRi`
     * **Email**: `mailto:alvinoaldorino@gmail.com`
