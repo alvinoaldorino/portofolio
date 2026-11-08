@@ -7,3 +7,4 @@ Thumbs.db
 
 # Agent internal skills
 SKILL/
+.playwright-mcp/

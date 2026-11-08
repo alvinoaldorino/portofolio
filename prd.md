@@ -43,9 +43,10 @@ flowchart TD
     Hero --> About["3. About Me (Bio, Background, Pixel Mascot)"]
     About --> Skills["4. Skills & Technologies (Languages & Frameworks)"]
     Skills --> Experience["5. Experience Timeline (Career/Education Path)"]
-    Experience --> Projects["6. My Projects (Grid Showcase, Tags, Live Demo, GitHub)"]
-    Projects --> Contact["7. Let's Work Together (Contact Form & Social Links)"]
-    Contact --> Footer["8. Footer (Copyright & Back to Top)"]
+    Experience --> Certificates["6. Certificates & Achievements (Gallery & Lightbox)"]
+    Certificates --> Projects["7. My Projects (Grid Showcase, Tags, Live Demo, GitHub)"]
+    Projects --> Contact["8. Let's Work Together (Direct Social Links)"]
+    Contact --> Footer["9. Footer (Copyright & Back to Top)"]
 ```
 
 ### 3.1 Rincian Setiap Bagian (Section Breakdown)
@@ -81,7 +82,20 @@ Dikelompokkan ke dalam kartu kategori bergradasi gelap:
 * Garis vertikal interaktif dengan badge lingkaran tahun (contoh: 2024, 2025, 2026).
 * Informasi posisi/role, nama instansi/perusahaan/kampus, dan deskripsi pencapaian/tugas.
 
-#### F. My Projects Section
+#### F. Certificates & Achievements (Showcase Sertifikat)
+* Ditempatkan tepat di bawah section Experience & Journey.
+* **Grid Galeri Sertifikat**: Menampilkan foto sertifikat beresolusi tinggi yang diekstrak dari folder `sertifikat/`.
+* **Sertifikat yang Ditampilkan**:
+  1. *JHIC 2026 - Grand Finalist (Business Plan Competition)*: Kerjasama Jagoan Hosting Indonesia & Kementerian Komunikasi dan Digital (KOMDIGI).
+  2. *ITechno Cup 2026 - Web Development Competition*: Diselenggarakan oleh HIMATIK Politeknik Negeri Jakarta (PNJ) untuk tim Gotei13 (proyek sistem antrean digital MyTurn).
+  3. *JHIC 2026 - Quarter Finalist (Business Plan Competition)*: Babak perempat final inovasi proyek teknologi.
+  4. *Cisco Networking Academy - IT Essentials (PC Hardware, Software & Networking)*: Kerjasama dengan Digitalent Kominfo RI beserta badge verifikasi resmi.
+  5. *Dibimbing.id - Certificate of Appreciation (DSF 54.0 FWD, FE & BE)*: Pelatihan intensif arsitektur Front-End dan Back-End.
+* **Fitur Interaktif**:
+  * Lightbox Modal popup untuk melihat pratinjau foto sertifikat secara penuh (dukungan ESC & click-outside).
+  * Direct Link ke file PDF dokumen asli berlisensi resmi.
+
+#### G. My Projects Section
 * **Grid Layout**: 3 kolom di desktop, 2 kolom di tablet, 1 kolom di HP.
 * **Item Kartu Proyek**:
   * Thumbnail mockup proyek (gambar resolusi baik).
@@ -90,20 +104,14 @@ Dikelompokkan ke dalam kartu kategori bergradasi gelap:
   * Tag badges teknologi (misal: `Laravel`, `Tailwind`, `MySQL`).
   * Action Links: Tombol *"View Details"* / *"Live Demo"* dan tombol ikon *"GitHub Repository"*.
 
-#### G. Let's Work Together (Contact & Social Links)
-* **Kolom Kiri (Contact Form)**:
-  * Input Nama (*Name*)
-  * Input Email (*Email*)
-  * Input Pesan (*Message*)
-  * Tombol Submit *"Send Message"* bergradasi ungu neon.
-* **Kolom Kanan (Informasi & Social Media)**:
-  * Teks ajakan kolaborasi/kerja sama.
-  * List layanan yang ditawarkan (Web Development, UI/UX Design, dll).
+#### G. Let's Work Together (Direct Social & Contact Links)
+* **Connect Directly Card**:
+  * Teks ajakan kolaborasi dan kemudahan komunikasi langsung.
   * **Baris Ikon Sosial Media Interaktif**:
-    * **GitHub**: Link ke profil GitHub.
-    * **YouTube**: Link ke channel YouTube.
-    * **Instagram**: Link ke akun Instagram.
-    * **Email**: Tautan `mailto:` langsung.
+    * **GitHub**: `https://github.com/zaxkai`
+    * **YouTube**: `https://youtube.com/@zaxkai01?si=ViW1FjtthBHRgBSw`
+    * **Instagram**: `https://www.instagram.com/zaxkai_1?cplk=Y214ZWtnaThubzRi`
+    * **Email**: `mailto:alvinoaldorino@gmail.com`
 
 ---
 
